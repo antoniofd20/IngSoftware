@@ -1,0 +1,16 @@
+
+<h1>hola</h1>
+<form class="row my-3" method="GET">{% csrf_token %}
+    <div class="col-5">
+        <input class="form-control" type="text" id="kword" name="kword" placeholder="Buscar artista...">
+    </div>
+    <div class="col-6">
+        <button type="submit" class="btn btn-info">Buscar</button>
+    </div>
+</form>
+<ul>
+    
+    {% for l in lista %}
+        <li>{{l.disco.titulo}}</li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Gracias
+{% endblock titulo %}
+
+
+{% block contenido %}
+    <div class="bg-secondary">
+        <div class="mb-3 sticky-top">
+            {% include 'includes/header.html' %}
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="imagenFondo">
+                    <img src="{% static 'img/gracias.jpg' %}" class="img-fluid imagen" width="100%">
+                        <span><div class="container">
+                            <div class="row mx-5 px-2">
+                                <div class="col-10">
+                                    <p class="display-3 text-center">
+                                      Gracias por tu comentario, nos ayuda a mejorar.
+                                    </p>
+                                    <div class="row justify-content-around">
+                                        <div class="col-3">
+                                            <img src="{% static 'img/FLECHA.png' %}" class="img-fluid" alt="">
+                                        </div>
+                                    </div><br><br>
+                                    <div class="row justify-content-around">
+                                        <div class=" col-5">
+                                            <a href="{% url 'artista_app:inicio' %}">
+                                                <button type="button"  class="btn fondo1 text-light btn-lg btn-block">Volver a la tienda</button>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido %}

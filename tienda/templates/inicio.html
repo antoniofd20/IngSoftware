@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Principal
+{% endblock titulo %}
+
+
+{% block contenido %}
+<div class="bg-secondary">
+    <div class="mb-3 sticky-top">
+        {% include 'includes/header.html' %}
+    </div>
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="imagenFondo">
+                <img src="{% static 'img/portada.jpg' %}" class="img-fluid imagen" width="100%">
+                    <span><div class="container">
+                        <div class="row mx-5 px-5">
+                            <div class=" col-12">
+                                <p class="display-3 text-center">En esta cuarentena no te aburras y escucha música de tus
+                                    artistas favoritos. ¡Aquí la encontraras toda!
+                                </p>
+                                <div class="row justify-content-around">
+                                    <div class="col-3">
+                                        <img src="{% static 'img/FLECHA.png' %}" class="img-fluid" alt="">
+                                    </div>
+                                </div><br><br>
+                                <div class="row justify-content-around">
+                                    <div class=" col-5">
+                                        <a href="{% url 'artista_app:lista-artistas' %}">
+                                            <button type="button"  class="btn fondo1 text-light btn-lg btn-block">Ir ahora</button>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></span>
+            </div>
+        </div>
+    </div>
+</div>    
+
+{% endblock contenido %}

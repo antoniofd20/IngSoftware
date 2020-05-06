@@ -1,0 +1,13 @@
+
+
+{% for l in lista %}
+    l.portada
+    {% if l.portada %}
+        <img src="{{ l.portada.url }}" alt="">        
+    {% else %}
+        hola
+    {% endif %}
+        
+{% endfor %}
+    
+

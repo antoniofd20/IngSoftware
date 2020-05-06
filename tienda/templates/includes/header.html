@@ -1,0 +1,31 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light fondo1 px-5 py-3">
+  <a class="navbar-brand fondo1 text-light" href="{% url 'artista_app:inicio' %}">
+    <img src="{% static 'img/icono.png' %}" width="30" height="30" class="img-fluid">
+    DeepSound
+  </a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active text-light" href="{% url 'artista_app:tienda' %}">
+          Tienda
+        </a>
+        <a class="nav-item nav-link active text-light" href="{% url 'artista_app:lista-artistas' %}">Artistas</a>
+
+        <div class="dropdown fondo1">
+          <a class="btn fondo1 text-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Comentarios
+          </a>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'comentario_app:lista-comentarios' %}">Ver</a>
+            <a class="dropdown-item" href="{% url 'comentario_app:crear-comentario' %}">Escribir nuevo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="justify-content-end">
+      <a class="nav-item nav-link active text-light" href="#">
+        <img src="{% static 'img/carrito.png' %}" width="30" height="30" class="img-fluid">
+      </a>
+    </div>
+  </nav>

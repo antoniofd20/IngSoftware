@@ -1,0 +1,153 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    {{lista.disco.titulo}}
+{% endblock titulo %}
+
+
+
+{% block contenido %}
+
+<div class="bg-secondary">
+
+    <div class="mb-1 sticky-top">
+        {% include 'includes/header.html' %}
+    </div>
+
+    <div class="container pt-5 pl-5">
+      <div class="offset-1 col-10">
+        <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
+          <p class="h3 ">Datos del banco:</p>
+            <div class="row">
+                <div class=" col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Banco:</label>
+                        <input type="text" class="form-control" placeholder="Banco..."id={{form.banco}}
+                    </div>
+                </div>
+
+                <div class=" col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Tipo</label>
+                        <input type="text" class="form-control" placeholder="Tipo..."id={{form.tipo}}
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class=" col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Numero (16 digitos)</label><br>
+                        <input type="number" class="form-control" placeholder="Numero de la tarjeta..." id={{form.numero}}
+                    </div>
+                </div>
+                <div class=" col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre de la tarjeta:</label>
+                        <input type="text" class="form-control" placeholder="Nombre de la tarjeta..."id={{form.nombre}}
+                    </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class=" col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fecha:</label>
+                        <input type="date" class="form-control" placeholder="Fecha..."id={{form.fecha}}
+                    </div>
+                </div>
+                <div class=" col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Digitos:</label>
+                        <input type="number" class="form-control" placeholder="Clave 3 digitos..."id={{form.digitos}}
+                    </div>
+                </div>
+            </div><br>
+
+            <p class="h3 ">Datos personales y entrega:</p>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apellido paterno:</label>
+                        <input type="text" class="form-control" placeholder="Apellido paterno..."id={{form.apellido_paterno}}
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Apellido materno:</label>
+                        <input type="text" class="form-control" placeholder="Apellido materno..."id={{form.apellido_materno}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-5">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Nombre(s):</label>
+                    <input type="text" class="form-control" placeholder="Apellido materno..."id={{form.nombre_cliente}}
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">email:</label>
+                        <input type="email" class="form-control" placeholder="example@direccion.com"id={{form.email}}
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Calle y numero:</label>
+                        <input type="text" class="form-control" placeholder="Calle y numero..."id={{form.calle_numero}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Colonia:</label>
+                        <input type="text" class="form-control" placeholder="Colonia..."id={{form.colonia}}
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Delegación o municipio:</label>
+                        <input type="text" class="form-control" placeholder="Delegación o municipio..."id={{form.delegacion}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Código postal:</label>
+                        <input type="text" class="form-control" placeholder="Código postal..."id={{form.codigo_postal}}
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Estado:</label>
+                        <input type="text" class="form-control" placeholder="Estado..."id={{form.estado}}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">País:</label>
+                        <input type="text" class="form-control" placeholder="País..."id={{form.pais}}
+                    </div>
+                </div>
+                <div class="mt-4 pt-2 col-5">
+                    <button type="submit" class="btn fondo1 text-light btn-block">Realizar pago</button>
+                </div>
+            </div>
+        </form>
+      </div>
+    </div>
+</div>
+
+
+    <!--{{ lista.disco.lista_canciones|linebreaksbr }}-->
+
+
+{% endblock contenido %}

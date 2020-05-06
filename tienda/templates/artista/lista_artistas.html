@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block titulo %}
+    Artistas
+{% endblock titulo %}
+
+
+
+{% block contenido %}
+
+    <div class="bg-secondary">
+
+    <div class="mb-5 sticky-top">
+        {% include 'includes/header.html' %}
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <!--Columna izquierda-->
+            <div class="col-3 position-fixed">
+                <form class="row my-3" method="GET">{% csrf_token %}
+                    <div class="col-8">
+                        <input class="form-control bg-dark text-light" type="text" id="kword" name="kword" placeholder="Buscar artista...">
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn fondo1 text-light">Buscar</button>
+                    </div>
+                </form>
+                <ul class="list-group">
+                    {% for l in lista %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-dark text-light">
+                            {{ l.nombre }} {{ l.last_name }} - {{ l.disco.titulo }}
+                            <span class="badge fondo1 badge-pill text-light">{{ l.numero_albums }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+            <!--COLUMNA DERECHA-->
+            <div class="offset-3 col-9">
+                <div class="container-fluid">
+                    <p class="h2 font-weight-bold text-light">Mira la variedad de artistas y distintos albums que tenemos para ti...</p><br>
+
+                    <div class="list-group justify-context-around">
+                        <div class="row">
+                            {% for l in lista %}
+
+                            <div class="col-5 mb-3 ">
+                                <div class="card mb-3 bg-dark text-light" style="max-width: 540px;">
+                                    <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        {% include 'includes/ifs.html' %}
+                                    </div>
+                                    <div class="col-md-8 bg-dark text-light">
+                                        <div class="card-body">
+                                        <h5 class="card-title">{{ l.nombre }} {{ l.last_name }} - {{ l.disco.titulo }}</h5>
+                                        <p class="card-text">{{ l.get_genero_display }}</p>
+                                        <p class="card-text">Escuchas a {{ l.nombre }} {{ l.last_name }} desde {{ l.year }}</p>
+                                        <p class="card-text"><small class="text-muted">albums {{ l.numero_albums }}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="accordion" id="accordionExample">
+                                        <div class="card bg-dark text-light">
+                                          <div class="card-header" id="headingTwo">
+                                            <h2 class="mb-0">
+                                              <button class="btn btn-link collapsed bg-dark text-light" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                                              aria-expanded="false" aria-controls="collapseTwo">
+                                                info
+                                              </button>
+                                            </h2>
+                                          </div>
+                                          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                {{ l.descripcion}}
+                                            </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Paginacion -->
+        <div class="container bg-seccondary">
+            <div class="row justify-content-center bg-seccondary">
+                {% if is_paginated %}
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination ">
+                            <!-- PAGINAS PREVIAS -->
+                            {% if page_obj.has_previous %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{page_obj.previous_page_number}}" aria-label="Previous">
+                                    <span aria-hidden="true">Atras</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                            <!-- PAGINA ACTUAL -->
+                            {% for pagina in paginator.page_range %}
+
+                                {% ifequal pagina page_obj.number  %}
+                                    <a class="page-link">{{pagina}} <span class="sr-only">(current)</span></a>
+                                    {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{pagina}}">{{pagina}}</a></li>
+                                {% endifequal %}
+
+                            {% endfor %}
+                            <!-- PAGINA SIGUIENTE-->
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link" href="?page={{page_obj.next_page_number}}" aria-label="Next">
+                                    <span aria-hidden="true">Siguiente</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock contenido %}
